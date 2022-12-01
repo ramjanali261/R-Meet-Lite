@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+body{
+
+    background-color: #1a1d30;
+
+}
+.join {
+    margin-left: auto !important;
+}
+
+.navbar-nav {
+    margin: auto !important;
+    text-align: center;
+}
+.hero{
+    margin-top: 20px;
+    height: 30rem;
+    background-color: rgb(9, 8, 8);
+    margin-bottom: 1.5rem;
+    /* background-image: url("./img/as.avif"); */
+    background-color: #2c3046;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    border-radius: 45px;
+  
+}
+.cardDetails{
+    border: none;
+    height: 100%;
+    color: rgb(240, 227, 227);
+    background: transparent;
+}
+.card-body{
+    margin:auto;
+    margin-top: 15%;
+    font-family: 'Handlee', cursive;
+    /* background: transparent; */
+}
+.but{
+    margin-left: 25%;
+    margin-top: 10%;
+}
+.footer{
+    margin-top: 1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#2c3046;
+    color: white;
+    text-align: center;
+  }
+  .footer p{
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    .btn-outline-warning{
+        margin-top: 10px;
+    }
+  }
+
+  .joinBtnShow{
+    display: none;
+}
+  @media only screen and (max-width: 991px) {
+    .joinBtn{
+        display: none;
+    }
+
+    .joinBtnShow{
+        display: block;
+        margin-top: 15px;
+    }
+  }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-Meet-Lite</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+        // console.log("<%= roomId %>")
+        // console.log(ROOM_ID);
+    </script>
+
+</head>
+<body>
+
+    <div class="main">
+        <div class="main_left">
+            <div class="main_videos">
+                <div id = "video-grid">
+    
+                </div>
+            </div>
+            <div class="main-controls" style="display: flex;">
+                <div class="main_controls_block">
+                    <div onclick="muteUnmute()" class="main_controls_button main_mute_button">
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>Mute</span>
+                    </div>
+                    <div onclick="playStop()" class="main_controls_button main_video_button">
+                        <i class="fa-solid fa-video"></i>
+                        <span>Stop Video</span>
+                    </div>
+                </div>
+                <div class="main_controls_block">
+                    <div class="main_controls_button">
+                        <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        <span>Security</span>
+                    </div>
+                    <div class="main_controls_button">
+                        <i class="fa fa-user-friends"></i>
+                        <span>Participants</span>
+                    </div>
+                    <div class="main_controls_button">
+                        <i class="fa-solid fa-comment-alt"></i>
+                        <span>Chat</span>
+                    </div>
+                </div>
+                <div class="main_controls_block">
+                    <div class="main_controls_button">
+                        <!-- <i class="fa-solid fa-video"></i> -->
+                        <span>Leave Meeting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_right">
+            <div class="main_header">
+                <h6>Chats</h6>
+            </div>
+            <div class="main_chat_window">
+                <ul class="messages">
+
+                </ul>
+            </div>
+            <div class="main_message_container">
+                <input id="chat_message" type="text" placeholder="type here...">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

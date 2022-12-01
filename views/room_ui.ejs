@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R-Meet-Lite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Bootstrap js cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Add Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+      // var userName=prompt("Enter name: ");
+      // console.log(userName)
+      // var span = document.getElementById('name-tag');
+      // span.innerText = span.textContent = `ra`;
+      // document.getElementById("").textContent=`${userName}`;
+
+      const ROOM_ID = "<%= roomId %>";
+      // console.log("<%= roomId %>")
+      // console.log(ROOM_ID);
+  </script>
+
+  </head>
+  <body>
+    <div class="app-container">
+      <button class="mode-switch">
+        <!-- sun icon -->
+        <svg
+          class="sun"
+          fill="none"
+          stroke="#fbb046"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="feather feather-sun"
+          viewBox="0 0 24 24"
+        >
+          <defs />
+          <circle cx="12" cy="12" r="5" />
+          <path
+            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+          />
+        </svg>
+        <!-- sun icon -->
+
+        <!-- moon icon -->
+        <svg
+          class="moon"
+          fill="none"
+          stroke="#ffffff"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="feather feather-moon"
+          viewBox="0 0 24 24"
+        >
+          <defs />
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+        <!-- moon icon -->
+      </button>
+      <div class="left-side">
+        <div class="navigation">
+          <a href="#" class="nav-link icon">
+            <!-- Home icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-home"
+              viewBox="0 0 24 24"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <path d="M9 22V12h6v10" />
+            </svg>
+            <!-- Home icon -->
+          </a>
+
+          <a href="#" class="nav-link icon">
+            <!-- reload phone icon -->
+            <i class="fa-sharp fa-solid fa-rotate-right" style="font-size: 22px;color: grey;"></i>
+            <!-- reload phone icon -->
+          </a>
+          
+          <a href="#" class="nav-link icon">
+            <!-- Setting icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-settings"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"
+              />
+            </svg>
+            <!-- Setting icon -->
+          </a>
+        </div>
+      </div>
+      <div class="app-main">
+
+        <!--video-grid-->
+        <div class="video-call-wrapper" >
+          <!-- <span class="name-tag" id="na">rajj</span> -->
+          <!-- Video Participant 1 -->
+          <div class="video-participant" id="video-grid" >
+            <!-- <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div> -->
+            
+          </div>
+          
+        </div>
+        
+
+        <div class="video-call-actions">
+          <button onclick="muteUnmute()" class="video-action-button mic main_mute_button">
+            <i class="fa fa-microphone"></i>
+          </button>
+          <button onclick="playStop()"class="video-action-button camera main_video_button">
+            <i class="fa-solid fa-video"></i>
+          </button>
+          <button class="video-action-button endcall">Leave</button>
+          
+        </div>
+      </div>
+
+      <!-- Right Side -->
+      <div class="right-side">
+        <button class="btn-close-right">
+          <!-- Close Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="feather feather-x-circle"
+            viewBox="0 0 24 24"
+          >
+            <defs></defs>
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M15 9l-6 6M9 9l6 6"></path>
+          </svg>
+          <!-- Close Icon -->
+        </button>
+        <div class="chat-container">
+          <div class="chat-header">
+            <button class="chat-header-button">Realtime Chat</button>
+          </div>
+          <div class="chat-area">
+            <!-- Message 1 -->
+            <div class="message-wrapper">
+              <div class="message-content">
+                <ul class="messages">
+                  
+
+                </ul>
+              </div>
+            </div>
+            <!-- Message 2 -->
+            <!-- <div class="message-wrapper">
+              <div class="profile-picture">
+                <img
+                  src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                  alt=""
+                />
+              </div>
+              <div class="message-content">
+                <p class="name">Andy Will</p>
+                <div class="message">
+                  Hello! Can you hear me?🤯 <a class="mention">@ryanpatrick</a>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="chat-typing-area-wrapper">
+            <div class="chat-typing-area">
+              <input
+                id="chat_message"
+                type="text"
+                placeholder="Type your message..."
+                class="chat-input"
+              />
+              <button onclick="sendmes()" class="send-button">
+                <!-- Send icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-send"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+                <!-- Send icon -->
+              </button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <button class="expand-btn">
+        <!-- expand icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-message-circle"
+        >
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+          />
+        </svg>
+        <!-- expand icon -->
+      </button>
+    </div>
+    <script src="ui_script.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
