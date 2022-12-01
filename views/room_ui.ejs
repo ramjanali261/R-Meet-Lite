@@ -80,7 +80,7 @@
       </button>
       <div class="left-side">
         <div class="navigation">
-          <a href="#" class="nav-link icon">
+          <a href="/" class="nav-link icon">
             <!-- Home icon -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,15 +96,15 @@
               <path d="M9 22V12h6v10" />
             </svg>
             <!-- Home icon -->
-          </a>
+          </button>
 
-          <a href="#" class="nav-link icon">
+          <a href="" onclick="location.reload()" class="nav-link icon">
             <!-- reload phone icon -->
             <i class="fa-sharp fa-solid fa-rotate-right" style="font-size: 22px;color: grey;"></i>
             <!-- reload phone icon -->
           </a>
           
-          <a href="#" class="nav-link icon">
+          <a href="#" data-toggle="tooltip" title="Disabled Settings" class="nav-link icon">
             <!-- Setting icon -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@
           <button onclick="playStop()"class="video-action-button camera main_video_button">
             <i class="fa-solid fa-video"></i>
           </button>
-          <button class="video-action-button endcall">Leave</button>
+          <a href="/"><button class="video-action-button endcall">Leave</button></a>
           
         </div>
       </div>
@@ -178,7 +178,7 @@
         </button>
         <div class="chat-container">
           <div class="chat-header">
-            <button class="chat-header-button">Realtime Chat</button>
+            <button class="chat-header-button">Chat</button>
           </div>
           <div class="chat-area">
             <!-- Message 1 -->
