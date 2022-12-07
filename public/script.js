@@ -15,8 +15,10 @@ myVideo.muted=true;
 var peer= new Peer(undefined,{
     path: '/peerjs',
     host:'/',
-    port:'443'
+    port:'3000'
 });
+
+const peers={}
 
 let myVideoStream
 navigator.mediaDevices.getUserMedia({
@@ -32,11 +34,16 @@ navigator.mediaDevices.getUserMedia({
         call.on('stream',userVideoStream=>{
             addVideoStream ( video,userVideoStream)
         })
+        call.on("close",()=>{
+            video.remove()
+        })
+        peers[userId]= call
     })
 
     socket.on('user-connected',(userId)=>{
         connecToNewUser(userId,stream); //defined the function below
     })    
+    
 
     //message 
     let text = $('input')
@@ -54,6 +61,10 @@ socket.on('createMessage',message =>{
 })
 
 })
+
+socket.on('user-disconnected',(userId)=>{
+    if(peers[userId]) peers[userId].close() //defined the function below
+})    
 
 //open the peer room
 peer.on('open',id =>{
@@ -87,16 +98,13 @@ const scrollToBottom= ()=>{
     d.scrollTop(d.prop("scrollheight"));
 }
 
-const scrollToBot= ()=>{
-    let d=$('.chat-area');
-    d.scrollTop(d.prop("scrollheight"));
-}
 //message
 const sendmes= ()=>{
     var msg = document.getElementById("chat_message").value;
     if(msg.length !==0) {
         socket.emit('message', msg);
     }
+    
 
 }
 

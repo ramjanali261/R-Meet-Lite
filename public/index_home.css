@@ -4,6 +4,23 @@
     margin: 0;
     padding: 0;
   }
+  .heros{
+    height: 30rem;
+     background-color: rgb(9, 8, 8);
+     margin-bottom: 1.5rem;
+     /* background-image: url("./img/as.avif"); */
+     background-color: #2c3046;
+     /* background-repeat: no-repeat; */
+     /* background-size: cover; */
+     border-radius: 45px;
+ }
+ .card-bodys{
+      margin:auto;
+     margin-top: 5%;
+     padding: 20px;
+     text-align: justify;
+     font-family: 'Handlee', cursive;
+ }
 body{
 
     background-color: #1a1d30;

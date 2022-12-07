@@ -14,6 +14,31 @@ video{
   position: relative;
   margin-right: 1rem;
 }
+
+/*responsive code for video component*/
+@media only screen and (max-width: 991px){
+  
+  video{
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+  }
+  .video-participant{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* padding: 20px; */
+   
+  
+  }
+}
+
+
 .main{
   height: 100vh;
   display: flex;
@@ -679,9 +704,9 @@ body.dark .btn-close-right {
   }
 }
 /*==================== Devices Between 520px - 720px ====================*/
-@media screen and (max-width: 520px) and (max-width: 720px) {
+@media screen and (max-width: 520px) and (max-width: 991px) {
   .video-participant {
-    width: 50%;
-    height: 33.3%;
+    width: 100%;
+    height: 100%;
   }
 }

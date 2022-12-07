@@ -34,6 +34,10 @@ app.get('/room_ui',(req,res)=>{
 //setting the unique id in the url
 //--redirecting the home page to room-->with uuid parameter
 //setting the room id to web address
+app.get('/about',(req,res)=>{
+    res.render('about');
+})
+
 app.get('/:room_ui',(req,res)=>{ 
     res.render('room_ui',{roomId: req.params.room})
 })
@@ -48,6 +52,10 @@ io.on('connection',socket =>{
 
         socket.on('message',message => {
             io.to(roomId).emit('createMessage',message)
+        })
+
+        socket.on('disconnect',()=>{
+            socket.to(roomId).emit('user-disconnected',userId);
         })
     })
 })
