@@ -5,6 +5,7 @@ myVideo.muted=true;
 
 //try
 
+
 // var userName=prompt("Enter name: ");
 //     //   console.log(userName)
 //       var span = document.getElementById('na');
@@ -15,7 +16,7 @@ myVideo.muted=true;
 var peer= new Peer(undefined,{
     path: '/peerjs',
     host:'/',
-    port:'443'
+    port:'3000'
 });
 
 const peers={}
@@ -34,10 +35,10 @@ navigator.mediaDevices.getUserMedia({
         call.on('stream',userVideoStream=>{
             addVideoStream ( video,userVideoStream)
         })
-        call.on("close",()=>{
-            video.remove()
-        })
-        peers[userId]= call
+        // call.on("close",()=>{
+        //     video.remove()
+        // })
+        // peers[userId]= call
     })
 
     socket.on('user-connected',(userId)=>{
@@ -55,15 +56,17 @@ $('html').keydown((e)=>{
     }
 })
 
-socket.on('createMessage',message =>{
-    $('.messages').append(`<li class="message"><b>user</b><br/>${message}</li><br/>`)
+socket.on('createMessage',(message,userId) =>{
+    $('.messages').append(`<li class="message"><b>${userId}</b><br/>${message}</li><br/>`)
+    // $('.messages').append(`user: ${message}`)
     scrollToBottom()
 })
 
 })
 
 socket.on('user-disconnected',(userId)=>{
-    if(peers[userId]) peers[userId].close() //defined the function below
+    if(peers[userId]) 
+    peers[userId].close() //defined the function below
 })    
 
 //open the peer room
@@ -81,6 +84,11 @@ const connecToNewUser=(userId,stream)=>{
     call.on('stream',userVideoStream =>{
         addVideoStream(video,userVideoStream)
     })
+    
+    call.on('close',()=>{
+        video.remove()
+    })
+    peers[userId]= call
 }
 
 
@@ -104,7 +112,7 @@ const sendmes= ()=>{
     if(msg.length !==0) {
         socket.emit('message', msg);
     }
-    
+    chat_message.value=""
 
 }
 

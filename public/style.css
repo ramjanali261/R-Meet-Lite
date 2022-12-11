@@ -31,7 +31,7 @@ video{
     margin: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
     /* padding: 20px; */
    
   
@@ -246,6 +246,7 @@ body.dark .btn-close-right {
   transition: 0.2s ease-in;
 }
 .right-side {
+  /* visibility: hidden; */
   margin-left: auto;
   flex-basis: 400px;
   height: 100%;
